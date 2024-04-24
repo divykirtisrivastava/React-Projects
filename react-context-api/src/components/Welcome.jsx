@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import UserContext from '../context/UserContext'
 
 export default function Welcome() {
+
+  let {user} = useContext(UserContext)
+
   return (
     <div className="relative w-full bg-white">
       <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
@@ -24,7 +28,7 @@ export default function Welcome() {
             <p className="text-sm font-medium">Join our team &rarr;</p>
           </div>
           <h1 className="mt-8 text-3xl font-bold tracking-tight text-black md:text-4xl lg:text-6xl">
-           Welcome 
+           Welcome {user.name} & Email {user.email}
           </h1>
           <p className="mt-8 text-lg text-gray-700">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur modi blanditiis
@@ -37,6 +41,7 @@ export default function Welcome() {
                 type="email"
                 placeholder="Enter your email"
                 id="email"
+                value={user.email}
               ></input>
               <p className="mt-2 text-sm text-gray-500">We care about your privacy</p>
             </div>

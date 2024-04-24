@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
+import UserContext from '../context/UserContext'
+import { Link } from 'react-router-dom'
 
 export default function SignUp() {
 
   let [name, setName] = useState('')
 
   let [email, setEmail] = useState('')
+let {setUser} = useContext(UserContext)
 
+
+function handleClick(){
+  setUser({name, email})
+}
   return (
     <section>
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -59,12 +66,14 @@ export default function SignUp() {
                 </div>
                 
                 <div>
-                  <button
+                  <Link
                     type="button"
+                    to='/welcome'
+                    onClick={handleClick}
                     className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                   >
                     Create Account <ArrowRight className="ml-2" size={16} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </form>
